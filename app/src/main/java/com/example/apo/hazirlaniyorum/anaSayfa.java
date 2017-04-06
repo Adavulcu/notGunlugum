@@ -1,28 +1,14 @@
 package com.example.apo.hazirlaniyorum;
 
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.ActivityGroup;
-import android.app.LocalActivityManager;
-import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewConfiguration;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
-import android.widget.LinearLayout;
 import android.widget.TabHost;
-import android.widget.TabWidget;
 import android.widget.Toast;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -34,16 +20,18 @@ public class anaSayfa extends AppCompatActivity {
 
     TabHost tabHost;
 //////////////////////////////////////////////////YGS BÖLÜMÜ
-    private ArrayList<String> ders_listYGS;
+   // private ArrayList<String> ders_listYGS;
+    private ArrayList<dersEkle> dersListYgs;
     private ExpListAdapter expand_adapterYGS;
-    private HashMap<String, ArrayList<konuEkle>> konularListYGS;
+    private HashMap<dersEkle, ArrayList<konuEkle>> konularListYGS;
     final ArrayList<konuEkle> konularFizikYGS=new ArrayList<konuEkle>();
     final ArrayList<konuEkle> konularKimyaYGS=new ArrayList<konuEkle>();
     private ExpandableListView expandlist_viewYGS;
     /////////////////////////////////////////LYS bölümü
-    private ArrayList<String> ders_listLYS;
+   // private ArrayList<String> ders_listLYS;
+    private ArrayList<dersEkle>dersListLys;
     private ExpListAdapter expand_adapterLYS;
-    private HashMap<String, ArrayList<konuEkle>> konularListLYS;
+    private HashMap<dersEkle, ArrayList<konuEkle>> konularListLYS;
     final ArrayList<konuEkle> konularFizikLYS=new ArrayList<konuEkle>();
     final ArrayList<konuEkle> konularKimyaLYS=new ArrayList<konuEkle>();
     private ExpandableListView expandlist_viewLYS;
@@ -131,7 +119,7 @@ public class anaSayfa extends AppCompatActivity {
             HazırlaYGS(); // expandablelistview içeriğini hazırlamak için
 
             // Adapter sınıfımızı oluşturmak için başlıklardan oluşan listimizi ve onlara bağlı olan elemanlarımızı oluşturmak için HaspMap türünü yolluyoruz
-            expand_adapterYGS = new ExpListAdapter(getApplicationContext(), ders_listYGS, konularListYGS);
+            expand_adapterYGS = new ExpListAdapter(getApplicationContext(), dersListYgs, konularListYGS);
             expandlist_viewYGS.setAdapter(expand_adapterYGS);  // oluşturduğumuz adapter sınıfını set ediyoruz
 
             //////////////////////////////////LYS bölümü
@@ -139,7 +127,7 @@ public class anaSayfa extends AppCompatActivity {
             HazırlaLYS(); // expandablelistview içeriğini hazırlamak için
 
             // Adapter sınıfımızı oluşturmak için başlıklardan oluşan listimizi ve onlara bağlı olan elemanlarımızı oluşturmak için HaspMap türünü yolluyoruz
-            expand_adapterLYS = new ExpListAdapter(getApplicationContext(), ders_listLYS, konularListLYS);
+            expand_adapterLYS = new ExpListAdapter(getApplicationContext(), dersListLys, konularListLYS);
             expandlist_viewLYS.setAdapter(expand_adapterLYS);  // oluşturduğumuz adapter sınıfını set ediyoruz
 
 
@@ -184,18 +172,23 @@ public class anaSayfa extends AppCompatActivity {
 
         // başlıklara bağlı elemenları tutmak için oluşturduk
         try {
-            ders_listYGS = new ArrayList<String>();  // başlıklarımızı listemelek için oluşturduk
-            konularListYGS = new HashMap<String, ArrayList<konuEkle>>();
-            ders_listYGS.add("FİZİK-I");
-            ders_listYGS.add("KİMYA-I");
+            dersListYgs=new ArrayList<dersEkle>();
+           // ders_listYGS = new ArrayList<String>();  // başlıklarımızı listemelek için oluşturduk
+            konularListYGS = new HashMap<>();
+         //   ders_listYGS.add("FİZİK-I");
+         //   ders_listYGS.add("KİMYA-I");
+            dersListYgs.add(new dersEkle("FİZİK-I",1));
+            dersListYgs.add(new dersEkle("KİMYA-I",2));
 
             konularFizikYGS.add(new konuEkle("kaldıracYgs", 1));
             konularFizikYGS.add(new konuEkle("vektorYgs", 2));
             konularKimyaYGS.add(new konuEkle("gazlarYgs", 3));
             konularKimyaYGS.add(new konuEkle("molekulYgs", 4));
 
-            konularListYGS.put(ders_listYGS.get(0), konularFizikYGS);
-            konularListYGS.put(ders_listYGS.get(1), konularKimyaYGS);
+            konularListYGS.put(dersListYgs.get(0), konularFizikYGS);
+            konularListYGS.put(dersListYgs.get(1), konularKimyaYGS);
+          //  konularListYGS.put(ders_listYGS.get(0), konularFizikYGS);
+           // konularListYGS.put(ders_listYGS.get(1), konularKimyaYGS);
         } catch (Exception ex) {
             int durtion = Toast.LENGTH_LONG;
             Toast toast = Toast.makeText(this, ex.getMessage(), durtion);
@@ -207,18 +200,21 @@ public class anaSayfa extends AppCompatActivity {
 
         // başlıklara bağlı elemenları tutmak için oluşturduk
         try {
-            ders_listLYS = new ArrayList<String>();  // başlıklarımızı listemelek için oluşturduk
-            konularListLYS=new  HashMap<String, ArrayList<konuEkle>>();
-            ders_listLYS.add("FİZİK-II");
-            ders_listLYS.add("KİMYA-II");
+            dersListLys=new ArrayList<dersEkle>();
+          //  ders_listLYS = new ArrayList<String>();  // başlıklarımızı listemelek için oluşturduk
+            konularListLYS=new HashMap<>();
+          //  ders_listLYS.add("FİZİK-II");
+           // ders_listLYS.add("KİMYA-II");
+            dersListLys.add(new dersEkle("FİZİK-II",3));
+            dersListLys.add(new dersEkle("KİMYA-II",4));
 
             konularFizikLYS.add(new konuEkle("kaldırac", 1));
             konularFizikLYS.add(new konuEkle("vektor", 2));
             konularKimyaLYS.add(new konuEkle("gazlar", 3));
             konularKimyaLYS.add(new konuEkle("molekul", 4));
 
-            konularListLYS.put(ders_listLYS.get(0), konularFizikLYS);
-            konularListLYS.put(ders_listLYS.get(1), konularKimyaLYS);
+            konularListLYS.put(dersListLys.get(0), konularFizikLYS);
+            konularListLYS.put(dersListLys.get(1), konularKimyaLYS);
 
         } catch (Exception ex) {
             int durtion = Toast.LENGTH_LONG;

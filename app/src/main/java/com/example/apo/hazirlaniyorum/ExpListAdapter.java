@@ -21,8 +21,9 @@ import java.util.List;
 
 public class ExpListAdapter extends BaseExpandableListAdapter {
 
-    public ArrayList<String> list_parent;
-    public HashMap<String, ArrayList<konuEkle>> list_child;
+    //public ArrayList<String> list_parent;
+    public ArrayList<dersEkle>ListParent;
+    public HashMap<dersEkle, ArrayList<konuEkle>> list_child;
     public Context context;
     public TextView dersAd;
     public TextView toplamKonu;
@@ -35,32 +36,32 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
     @Override
     public int getGroupCount() {
 
-        return list_parent.size();
+        return ListParent.size();
     }
 
-    public ExpListAdapter(Context context, ArrayList<String> list_parent, HashMap<String, ArrayList<konuEkle>> list_child)
+    public ExpListAdapter(Context context, ArrayList<dersEkle> list_parent, HashMap<dersEkle, ArrayList<konuEkle>> list_child)
     {
         this.context = context;
-        this.list_parent = list_parent;
+        this.ListParent = list_parent;
         this.list_child = list_child;
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
 
-        return list_child.get(list_parent.get(groupPosition)).size();
+        return list_child.get(ListParent.get(groupPosition)).size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
 
-        return list_parent.get(groupPosition);
+        return ListParent.get(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
 
-        return list_child.get(list_parent.get(groupPosition)).get(childPosition);
+        return list_child.get(ListParent.get(groupPosition)).get(childPosition);
 
     }
 
@@ -86,8 +87,8 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View view, ViewGroup parent) {
-        String title_name = (String)getGroup(groupPosition);
-
+       // String title_name = (String)getGroup(groupPosition);
+        dersEkle ders=(dersEkle)getGroup(groupPosition);
         if(view == null)
         {
             inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -100,7 +101,7 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
         toplamKonu=(TextView)view.findViewById(R.id.toplamkonu);
         toplamSoru=(TextView)view.findViewById(R.id.toplamSoru);
         dersAd = (TextView)view.findViewById(R.id.dersAd);
-        dersAd.setText(title_name);
+        dersAd.setText(ders.getDersAd());
 
         return view;
     }
