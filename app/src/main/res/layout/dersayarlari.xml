@@ -19,4 +19,10 @@
         android:layout_height="132dp"
         android:layout_weight="0.19" />
 
+    <ExpandableListView
+        android:id="@+id/ogrtKayitexp"
+        android:layout_width="match_parent"
+        android:layout_height="132dp"
+        android:layout_weight="0.74" />
+
 </LinearLayout>

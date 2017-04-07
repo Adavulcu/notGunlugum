@@ -20,13 +20,14 @@ import java.util.List;
 
 public class RaporExpListAdapter extends BaseExpandableListAdapter{
     public ArrayList<String> list_parent;
-    public HashMap<String, ArrayList<String>> list_child;
+    public HashMap<String, ArrayList<dersEkle>> list_child;
     public Context context;
     public TextView derssecimi;
     public CheckBox txt_child;
+    public Button goruntule;
     public LayoutInflater inflater;
 
-    public RaporExpListAdapter(Context context, ArrayList<String> list_parent, HashMap<String, ArrayList<String>> list_child)
+    public RaporExpListAdapter(Context context, ArrayList<String> list_parent, HashMap<String, ArrayList<dersEkle>> list_child)
     {
         this.context = context;
         this.list_parent = list_parent;
@@ -88,11 +89,13 @@ public class RaporExpListAdapter extends BaseExpandableListAdapter{
             }
             derssecimi=(TextView)view.findViewById(R.id.derssecimiView);
             derssecimi.setText(title_name);
+            goruntule=(Button ) view.findViewById(R.id.goruntuleBtn);
+           // goruntule.setText("GÖRÜNTÜLE");
         }
        catch (Exception ex)
        {
            int durtion= Toast.LENGTH_LONG;
-           Toast toast= Toast.makeText(context,ex.getMessage()+"parent",durtion);
+           Toast toast= Toast.makeText(context,ex.getMessage()+" rapor parent",durtion);
            toast.show();
        }
 
@@ -108,8 +111,8 @@ public class RaporExpListAdapter extends BaseExpandableListAdapter{
 
 
             // kaçıncı pozisyonda ise başlığımızın elemanı onun ismini alarak string e atıyoruz
-            String ders = (String) getChild(groupPosition, childPosition);
-
+           // String ders = (String) getChild(groupPosition, childPosition);
+            dersEkle ders=(dersEkle) getChild(groupPosition, childPosition);
             if (view == null) {
                 inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 view = inflater.inflate(R.layout.rapordersler, null);
@@ -118,7 +121,7 @@ public class RaporExpListAdapter extends BaseExpandableListAdapter{
 
             // listview_child ulaştığımıza göre içindeki bileşeni de kullanabiliyoruz daha sonradan view olarak return ediyoruz
             txt_child = (CheckBox) view.findViewById(R.id.raporDersCheck);
-            txt_child.setText(ders);
+            txt_child.setText(ders.getDersAd());
 
 
         }

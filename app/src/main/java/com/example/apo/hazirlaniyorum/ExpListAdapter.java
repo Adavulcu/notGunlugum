@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ExpListAdapter extends BaseExpandableListAdapter {
 
-    //public ArrayList<String> list_parent;
+
     public ArrayList<dersEkle>ListParent;
     public HashMap<dersEkle, ArrayList<konuEkle>> list_child;
     public Context context;
@@ -87,7 +87,7 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View view, ViewGroup parent) {
-       // String title_name = (String)getGroup(groupPosition);
+
         dersEkle ders=(dersEkle)getGroup(groupPosition);
         if(view == null)
         {

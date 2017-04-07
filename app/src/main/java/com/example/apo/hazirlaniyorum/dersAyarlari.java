@@ -21,6 +21,19 @@ public class dersAyarlari extends Activity {
     final ArrayList<String> derece = new ArrayList<String>();
     private ExpandableListView expandlist_viewYGS;
 
+
+    private ArrayList<dersEkle> dersTitle;
+    private dersAyarlariAdapter dersAyarexpand_adapter;
+    private HashMap<dersEkle,ogrtEkle> ogrt;
+    final ArrayList<ogrtEkle> ogrtKayit= new ArrayList<ogrtEkle>();
+    final ogrtEkle ogrtKayit1= new ogrtEkle("FİZİK"," hulya@gmail.com","Hülya ÜKTE",0,0);
+    final ogrtEkle ogrtKayit2= new ogrtEkle("KİMYA"," mustafa@gmail.com","Mustafa DUt",1,2);
+    private ExpandableListView dersAyarexpandlist;
+
+
+
+
+
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dersayarlari);
@@ -28,10 +41,16 @@ public class dersAyarlari extends Activity {
 
             expandlist_viewYGS = (ExpandableListView) findViewById(R.id.zorlukExp);
             Hazırla(); // expandablelistview içeriğini hazırlamak için
-
             // Adapter sınıfımızı oluşturmak için başlıklardan oluşan listimizi ve onlara bağlı olan elemanlarımızı oluşturmak için HaspMap türünü yolluyoruz
             expand_adapter = new zorlukAdapter(getApplicationContext(), title, hedef);
             expandlist_viewYGS.setAdapter(expand_adapter);  // oluşturduğumuz adapter sınıfını set ediyoruz
+
+
+            dersAyarexpandlist=(ExpandableListView) findViewById(R.id.ogrtKayitexp);
+            hazitlaDersTitle();
+            dersAyarexpand_adapter=new dersAyarlariAdapter(getApplicationContext(),dersTitle,ogrt);
+
+            dersAyarexpandlist.setAdapter(dersAyarexpand_adapter);
 
         }
         catch (Exception ex)
@@ -41,6 +60,31 @@ public class dersAyarlari extends Activity {
             toast.show();
         }
     }
+
+    private void hazitlaDersTitle() {
+
+        try
+        {
+
+
+            dersTitle=new ArrayList<dersEkle>();
+            ogrt=new HashMap<dersEkle,ogrtEkle>();
+            dersTitle.add(new dersEkle("FİZİK",0));
+            dersTitle.add(new dersEkle("KİMYA",2));
+
+           // ogrtKayit.add(new ogrtEkle("FİZİK"," hulya@gmail.com","Hülya ÜKTE",0,0));
+           // ogrtKayit.add(new ogrtEkle("KİMYA"," mustafa@gmail.com","Mustafa DUt",1,2));
+
+            ogrt.put(dersTitle.get(0),ogrtKayit1);
+            ogrt.put(dersTitle.get(1),ogrtKayit2);
+        }catch (Exception ex)
+        {
+            int durtion = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(this, ex.getMessage()+"zorluk", durtion);
+            toast.show();
+        }
+    }
+
     private void Hazırla() {
 
 

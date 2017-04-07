@@ -20,7 +20,7 @@ public class anaSayfa extends AppCompatActivity {
 
     TabHost tabHost;
 //////////////////////////////////////////////////YGS BÖLÜMÜ
-   // private ArrayList<String> ders_listYGS;
+
     private ArrayList<dersEkle> dersListYgs;
     private ExpListAdapter expand_adapterYGS;
     private HashMap<dersEkle, ArrayList<konuEkle>> konularListYGS;
@@ -28,7 +28,7 @@ public class anaSayfa extends AppCompatActivity {
     final ArrayList<konuEkle> konularKimyaYGS=new ArrayList<konuEkle>();
     private ExpandableListView expandlist_viewYGS;
     /////////////////////////////////////////LYS bölümü
-   // private ArrayList<String> ders_listLYS;
+
     private ArrayList<dersEkle>dersListLys;
     private ExpListAdapter expand_adapterLYS;
     private HashMap<dersEkle, ArrayList<konuEkle>> konularListLYS;
@@ -173,10 +173,9 @@ public class anaSayfa extends AppCompatActivity {
         // başlıklara bağlı elemenları tutmak için oluşturduk
         try {
             dersListYgs=new ArrayList<dersEkle>();
-           // ders_listYGS = new ArrayList<String>();  // başlıklarımızı listemelek için oluşturduk
+
             konularListYGS = new HashMap<>();
-         //   ders_listYGS.add("FİZİK-I");
-         //   ders_listYGS.add("KİMYA-I");
+
             dersListYgs.add(new dersEkle("FİZİK-I",1));
             dersListYgs.add(new dersEkle("KİMYA-I",2));
 
@@ -187,8 +186,7 @@ public class anaSayfa extends AppCompatActivity {
 
             konularListYGS.put(dersListYgs.get(0), konularFizikYGS);
             konularListYGS.put(dersListYgs.get(1), konularKimyaYGS);
-          //  konularListYGS.put(ders_listYGS.get(0), konularFizikYGS);
-           // konularListYGS.put(ders_listYGS.get(1), konularKimyaYGS);
+
         } catch (Exception ex) {
             int durtion = Toast.LENGTH_LONG;
             Toast toast = Toast.makeText(this, ex.getMessage(), durtion);
@@ -201,10 +199,9 @@ public class anaSayfa extends AppCompatActivity {
         // başlıklara bağlı elemenları tutmak için oluşturduk
         try {
             dersListLys=new ArrayList<dersEkle>();
-          //  ders_listLYS = new ArrayList<String>();  // başlıklarımızı listemelek için oluşturduk
+
             konularListLYS=new HashMap<>();
-          //  ders_listLYS.add("FİZİK-II");
-           // ders_listLYS.add("KİMYA-II");
+
             dersListLys.add(new dersEkle("FİZİK-II",3));
             dersListLys.add(new dersEkle("KİMYA-II",4));
 

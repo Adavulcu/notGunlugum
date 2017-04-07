@@ -20,14 +20,14 @@ public class rapor extends Activity {
     //////////////////////////////////////////////////YGS BÖLÜMÜ
     private ArrayList<String> titleYGS;
     private RaporExpListAdapter expand_adapterYGS;
-    private HashMap<String, ArrayList<String>> derslerListYGS;
-    final ArrayList<String> derslerYGS=new ArrayList<String>();
+    private HashMap<String, ArrayList<dersEkle>> derslerListYGS;
+    final ArrayList<dersEkle> derslerYGS=new ArrayList<dersEkle>();
     private ExpandableListView expandlist_viewYGS;
     /////////////////////////////////////////LYS bölümü
     private ArrayList<String> titleLYS;
     private RaporExpListAdapter expand_adapterLYS;
-    private HashMap<String, ArrayList<String>> derslerListLYS;
-    final ArrayList<String> derslerLYS=new ArrayList<String>();
+    private HashMap<String, ArrayList<dersEkle>> derslerListLYS;
+    final ArrayList<dersEkle> derslerLYS=new ArrayList<dersEkle>();
     private ExpandableListView expandlist_viewLYS;
 
     @Override
@@ -77,14 +77,14 @@ public class rapor extends Activity {
         // başlıklara bağlı elemenları tutmak için oluşturduk
         try {
             titleYGS = new ArrayList<String>();  // başlıklarımızı listemelek için oluşturduk
-            derslerListYGS = new HashMap<String, ArrayList<String>>();
+            derslerListYGS = new HashMap<String, ArrayList<dersEkle>>();
             titleYGS.add("DERS SEÇİMİ");
 
 
-            derslerYGS.add("FİZİK-I");
-            derslerYGS.add("KİMYA-I");
-            derslerYGS.add("MATEMATİK-I");
-            derslerYGS.add("TÜRKCE-I");
+            derslerYGS.add(new dersEkle("FİZİK-I",1));
+            derslerYGS.add(new dersEkle("KİMYA-I",2));
+            derslerYGS.add(new dersEkle("MATEMATİK-I",3));
+            derslerYGS.add(new dersEkle("TÜRKCE-I",4));
 
             derslerListYGS.put(titleYGS.get(0), derslerYGS);
 
@@ -100,14 +100,14 @@ public class rapor extends Activity {
         // başlıklara bağlı elemenları tutmak için oluşturduk
         try {
             titleLYS = new ArrayList<String>();  // başlıklarımızı listemelek için oluşturduk
-            derslerListLYS=new  HashMap<String, ArrayList<String>>();
+            derslerListLYS=new  HashMap<String, ArrayList<dersEkle>>();
             titleLYS.add("DERS SEÇİMİ");
 
 
-            derslerLYS.add("FİZİK-II");
-            derslerLYS.add("KİMYA-II");
-            derslerLYS.add("MATEMATİK-II");
-           derslerLYS.add("TÜRKÇE");
+            derslerLYS.add(new dersEkle("FİZİK-II",5));
+            derslerLYS.add(new dersEkle("KİMYA-II",6));
+            derslerLYS.add(new dersEkle("MATEMATİK-II",7));
+           derslerLYS.add(new dersEkle("TÜRKÇE",8));
 
            derslerListLYS.put(titleLYS.get(0), derslerLYS);
 
