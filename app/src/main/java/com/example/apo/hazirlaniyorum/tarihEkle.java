@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,19 @@ public class tarihEkle  extends AppCompatActivity{
     private TextView dateViewYgs,getDateViewLys;
     private int year, month, day;
 
+    public void onBackPressed() {
+        try {
+            Intent i=new Intent(".ANASAYFA");
+            startActivity(i);
+            super.onBackPressed();
+        }catch (Exception ex)
+        {
+            int durtion = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(this, ex.getMessage() + " onBack", durtion);
+            toast.show();
+        }
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

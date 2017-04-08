@@ -1,7 +1,9 @@
 package com.example.apo.hazirlaniyorum;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -218,6 +220,52 @@ public class anaSayfa extends AppCompatActivity {
             Toast toast = Toast.makeText(this, ex.getMessage(), durtion);
             toast.show();
         }
+    }
+    public void onBackPressed() {
+        try {
+            backButtonHandler();
+            //return;
+            //super.onBackPressed();
+        }catch (Exception ex)
+        {
+            int durtion = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(this, ex.getMessage() + " onBack", durtion);
+            toast.show();
+        }
+
+    }
+    public void backButtonHandler() {
+        try {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+                    anaSayfa.this);
+            alertDialog.setTitle("Uygulamadan Çıkmak?");
+            alertDialog.setMessage("Uygulamadan cıkmak istediginizden emin misiniz");
+            alertDialog.setIcon(R.mipmap.ic_launcher);
+            alertDialog.setPositiveButton("EVET",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(getApplicationContext(), GirisActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("EXIT", true);
+                            startActivity(intent);
+                            //finish();
+                           // System.exit(0);
+                        }
+                    });
+            alertDialog.setNegativeButton("HAYIR",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            alertDialog.show();
+        }catch ( Exception ex)
+        {
+            int durtion = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(this, ex.getMessage() + " onBack", durtion);
+            toast.show();
+        }
+
     }
 
 

@@ -8,8 +8,6 @@
         android:label="Not günlüğüm"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-
-
         >
 
 

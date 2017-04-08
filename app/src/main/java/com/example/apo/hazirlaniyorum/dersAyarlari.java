@@ -1,6 +1,7 @@
 package com.example.apo.hazirlaniyorum;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +33,19 @@ public class dersAyarlari extends AppCompatActivity {
     private ExpandableListView dersAyarexpandlist;
 
 
+    public void onBackPressed() {
+        try {
+            Intent i=new Intent(".ANASAYFA");
+            startActivity(i);
+            super.onBackPressed();
+        }catch (Exception ex)
+        {
+            int durtion = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(this, ex.getMessage() + " onBack", durtion);
+            toast.show();
+        }
 
+    }
 
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
