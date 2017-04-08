@@ -113,7 +113,7 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
 
 
             // kaçıncı pozisyonda ise başlığımızın elemanı onun ismini alarak string e atıyoruz
-            konuEkle konu = (konuEkle) getChild(groupPosition, childPosition);
+            final konuEkle konu = (konuEkle) getChild(groupPosition, childPosition);
 
             if (view == null) {
                 inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -126,6 +126,14 @@ public class ExpListAdapter extends BaseExpandableListAdapter {
             txt_child.setText(konu.getKonuAd());
             ID=(Button) view.findViewById(R.id.ID);
             ID.setText("soru gir");
+            ID.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int durtion= Toast.LENGTH_SHORT;
+                    Toast toast= Toast.makeText(context,konu.getKonuAd(),durtion);
+                    toast.show();
+                }
+            });
             //ID.setId(konu.getID());
         }
         catch (Exception ex)

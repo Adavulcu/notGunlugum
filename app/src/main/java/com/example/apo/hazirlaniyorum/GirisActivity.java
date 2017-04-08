@@ -20,9 +20,9 @@ public class GirisActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giris);
-        if (getIntent().getBooleanExtra("EXIT", false)) {
-            finish();
-        }
+      //  if (getIntent().getBooleanExtra("EXIT", false)) {
+         //   finish();
+        //}
         final TextView icon=(TextView) findViewById(R.id.iconText);
         final TextView ozluSoz=(TextView) findViewById(R.id.ozluSozText);
         final TextView soyleyen=(TextView) findViewById(R.id.ozluSozSoyleyenText);

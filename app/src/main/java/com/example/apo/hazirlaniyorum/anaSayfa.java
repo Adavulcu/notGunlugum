@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TabHost;
 import android.widget.Toast;
@@ -34,8 +35,8 @@ public class anaSayfa extends AppCompatActivity {
     private ArrayList<dersEkle>dersListLys;
     private ExpListAdapter expand_adapterLYS;
     private HashMap<dersEkle, ArrayList<konuEkle>> konularListLYS;
-    final ArrayList<konuEkle> konularFizikLYS=new ArrayList<konuEkle>();
-    final ArrayList<konuEkle> konularKimyaLYS=new ArrayList<konuEkle>();
+    final public ArrayList<konuEkle> konularFizikLYS=new ArrayList<konuEkle>();
+    final public ArrayList<konuEkle> konularKimyaLYS=new ArrayList<konuEkle>();
     private ExpandableListView expandlist_viewLYS;
 
     ///////////////////////// menu bölümü
@@ -223,7 +224,7 @@ public class anaSayfa extends AppCompatActivity {
     }
     public void onBackPressed() {
         try {
-            backButtonHandler();
+          //  backButtonHandler();
             //return;
             //super.onBackPressed();
         }catch (Exception ex)

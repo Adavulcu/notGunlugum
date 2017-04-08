@@ -27,14 +27,6 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".konular">
-            <intent-filter>
-                <action android:name=".KONULAR" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-        </activity>
         <activity android:name=".kayit">
             <intent-filter>
                 <action android:name=".KAYIT" />
