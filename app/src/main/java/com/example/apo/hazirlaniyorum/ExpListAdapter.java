@@ -22,17 +22,17 @@ import java.util.List;
 public class ExpListAdapter extends BaseExpandableListAdapter {
 
 
-    public ArrayList<dersEkle>ListParent;
-    public HashMap<dersEkle, ArrayList<konuEkle>> list_child;
-    public Context context;
-    public TextView dersAd;
-    public TextView toplamKonu;
-    public TextView toplamSoru;
-    public TextView bitenSoru;
-    public TextView bitenKonu;
-    public Button ID;
-    public CheckBox txt_child;
-    public LayoutInflater inflater;
+    private ArrayList<dersEkle>ListParent;
+    private HashMap<dersEkle, ArrayList<konuEkle>> list_child;
+    private Context context;
+    private TextView dersAd;
+    private TextView toplamKonu;
+    private TextView toplamSoru;
+    private TextView bitenSoru;
+    private TextView bitenKonu;
+    private Button ID;
+    private CheckBox txt_child;
+    private LayoutInflater inflater;
     @Override
     public int getGroupCount() {
 

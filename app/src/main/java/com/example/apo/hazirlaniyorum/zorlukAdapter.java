@@ -17,14 +17,14 @@ import java.util.HashMap;
  */
 
 public class zorlukAdapter extends BaseExpandableListAdapter {
-    public ArrayList<String> list_parent;
-    public HashMap<String, ArrayList<String>> list_child;
-    public Context context;
-    public TextView zorluk;
-    public TextView hedef;
-    public TextView derece;
-    public CheckBox txt_child;
-    public LayoutInflater inflater;
+    private ArrayList<String> list_parent;
+    private HashMap<String, ArrayList<String>> list_child;
+    private Context context;
+    private TextView zorluk;
+    private TextView hedef;
+    private TextView derece;
+    private CheckBox txt_child;
+    private LayoutInflater inflater;
 
     public zorlukAdapter(Context context, ArrayList<String> list_parent, HashMap<String, ArrayList<String>> list_child)
     {

@@ -19,13 +19,13 @@ import java.util.List;
  */
 
 public class RaporExpListAdapter extends BaseExpandableListAdapter{
-    public ArrayList<String> list_parent;
-    public HashMap<String, ArrayList<dersEkle>> list_child;
-    public Context context;
-    public TextView derssecimi;
-    public CheckBox txt_child;
-    public Button goruntule;
-    public LayoutInflater inflater;
+    private ArrayList<String> list_parent;
+    private HashMap<String, ArrayList<dersEkle>> list_child;
+    private Context context;
+    private TextView derssecimi;
+    private CheckBox txt_child;
+    private Button goruntule;
+    private LayoutInflater inflater;
 
     public RaporExpListAdapter(Context context, ArrayList<String> list_parent, HashMap<String, ArrayList<dersEkle>> list_child)
     {

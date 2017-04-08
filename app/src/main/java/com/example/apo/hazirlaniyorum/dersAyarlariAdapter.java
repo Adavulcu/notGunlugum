@@ -19,18 +19,18 @@ import java.util.HashMap;
  */
 
 public class dersAyarlariAdapter extends BaseExpandableListAdapter {
-    public ArrayList<dersEkle> list_parent;
-    public HashMap<dersEkle, ogrtEkle> list_child;
-    public Context context;
-    public TextView dersAdParent;
-    public TextView postaParent;
-    public TextView dersAdChild;
-    public TextView ogrtAD;
-    public TextView postaChild;
-    public EditText adSoyadtext;
-    public EditText postaText;
-    public Button gonder;
-    public LayoutInflater inflater;
+    private ArrayList<dersEkle> list_parent;
+    private HashMap<dersEkle, ogrtEkle> list_child;
+    private Context context;
+    private TextView dersAdParent;
+    private TextView postaParent;
+    private TextView dersAdChild;
+    private TextView ogrtAD;
+    private TextView postaChild;
+    private EditText adSoyadtext;
+    private EditText postaText;
+    private Button gonder;
+    private LayoutInflater inflater;
 
     public dersAyarlariAdapter(Context context, ArrayList<dersEkle> list_parent, HashMap<dersEkle,ogrtEkle> list_child)
     {

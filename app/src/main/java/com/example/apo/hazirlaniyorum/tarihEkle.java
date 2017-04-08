@@ -8,6 +8,7 @@ import android.app.Dialog;
 
 import android.os.Bundle;
 
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.View;
 
@@ -20,7 +21,7 @@ import android.widget.Toast;
  * Created by apo on 04.04.2017.
  */
 
-public class tarihEkle  extends Activity{
+public class tarihEkle  extends AppCompatActivity{
 
 
     private DatePicker datePicker;

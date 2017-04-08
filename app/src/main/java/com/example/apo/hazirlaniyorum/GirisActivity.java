@@ -22,6 +22,7 @@ public class GirisActivity extends AppCompatActivity {
         setContentView(R.layout.activity_giris);
         final TextView icon=(TextView) findViewById(R.id.iconText);
         final TextView ozluSoz=(TextView) findViewById(R.id.ozluSozText);
+        final TextView soyleyen=(TextView) findViewById(R.id.ozluSozSoyleyenText);
 
 
         Handler handler = new Handler();

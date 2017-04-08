@@ -20,7 +20,20 @@
         android:id="@+id/ozluSozText"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:text="Dünyada  en hakiki mürşit ilimdir. M.K. ATATÜRK" />
+        android:text="Dünyada  en hakiki mürşit ilimdir." />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:gravity="center"
+        android:id="@+id/ozluSozSoyleyenText"
+        android:text=" M.K. ATATÜRK"
+        android:layout_below="@+id/ozluSozText"
+        android:layout_alignLeft="@+id/ozluSozText"
+        android:layout_alignStart="@+id/ozluSozText"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
