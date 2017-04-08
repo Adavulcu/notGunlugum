@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
  * Created by apo on 04.04.2017.
  */
 
-public class kayit extends Activity {
+public class kayit extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

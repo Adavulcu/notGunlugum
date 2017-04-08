@@ -3,6 +3,7 @@ package com.example.apo.hazirlaniyorum;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ExpandableListView;
 import android.widget.TabHost;
 import android.widget.Toast;
@@ -14,7 +15,7 @@ import java.util.HashMap;
  * Created by apo on 05.04.2017.
  */
 
-public class dersAyarlari extends Activity {
+public class dersAyarlari extends AppCompatActivity {
     private ArrayList<String> title;
     private zorlukAdapter expand_adapter;
     private HashMap<String, ArrayList<String>> hedef;

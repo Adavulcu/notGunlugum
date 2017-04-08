@@ -3,6 +3,7 @@ package com.example.apo.hazirlaniyorum;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ExpandableListView;
 import android.widget.TabHost;
 import android.widget.Toast;
@@ -15,7 +16,7 @@ import java.util.List;
  * Created by apo on 05.04.2017.
  */
 
-public class rapor extends Activity {
+public class rapor extends AppCompatActivity {
     TabHost tabHost;
     //////////////////////////////////////////////////YGS BÖLÜMÜ
     private ArrayList<String> titleYGS;
