@@ -20,24 +20,26 @@ public class GirisActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giris);
-      //  if (getIntent().getBooleanExtra("EXIT", false)) {
-         //   finish();
-        //}
-        final TextView icon=(TextView) findViewById(R.id.iconText);
-        final TextView ozluSoz=(TextView) findViewById(R.id.ozluSozText);
-        final TextView soyleyen=(TextView) findViewById(R.id.ozluSozSoyleyenText);
+      if (getIntent().getBooleanExtra("EXIT", false)) {
+        //   finish();
+        //  System.exit(0);
+        }
+        else {
+          final TextView icon = (TextView) findViewById(R.id.iconText);
+          final TextView ozluSoz = (TextView) findViewById(R.id.ozluSozText);
+          final TextView soyleyen = (TextView) findViewById(R.id.ozluSozSoyleyenText);
 
 
-        Handler handler = new Handler();
+          Handler handler = new Handler();
 
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                Intent i=new Intent(".ANASAYFA");
-                startActivity(i);
-            }
-        }, 3000);
+          handler.postDelayed(new Runnable() {
+              public void run() {
+                  Intent i = new Intent(".ANASAYFA");
+                  startActivity(i);
+              }
+          }, 3000);
 
-
+      }
     }
 
 

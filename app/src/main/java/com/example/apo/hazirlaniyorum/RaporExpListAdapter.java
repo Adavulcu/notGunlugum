@@ -1,6 +1,8 @@
 package com.example.apo.hazirlaniyorum;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,7 @@ import java.util.List;
  * Created by apo on 05.04.2017.
  */
 
-public class RaporExpListAdapter extends BaseExpandableListAdapter{
+public class RaporExpListAdapter extends BaseExpandableListAdapter {
     private ArrayList<String> list_parent;
     private HashMap<String, ArrayList<dersEkle>> list_child;
     private Context context;

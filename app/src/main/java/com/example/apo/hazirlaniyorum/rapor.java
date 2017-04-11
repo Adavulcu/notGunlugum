@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TabHost;
 import android.widget.Toast;
@@ -12,12 +13,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import android.app.ExpandableListActivity;
 
 /**
  * Created by apo on 05.04.2017.
  */
 
-public class rapor extends AppCompatActivity {
+public class rapor extends AppCompatActivity  {
     TabHost tabHost;
     //////////////////////////////////////////////////YGS BÖLÜMÜ
     private ArrayList<String> titleYGS;
@@ -71,6 +73,14 @@ public class rapor extends AppCompatActivity {
         // Adapter sınıfımızı oluşturmak için başlıklardan oluşan listimizi ve onlara bağlı olan elemanlarımızı oluşturmak için HaspMap türünü yolluyoruz
         expand_adapterYGS = new RaporExpListAdapter(getApplicationContext(), titleYGS, derslerListYGS);
         expandlist_viewYGS.setAdapter(expand_adapterYGS);  // oluşturduğumuz adapter sınıfını set ediyoruz
+        expandlist_viewYGS.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+                //get the group header
+
+                return false;
+            }
+        });
 
         //////////////////////////////////LYS bölümü
         expandlist_viewLYS = (ExpandableListView)findViewById(R.id.expLYS);
@@ -133,4 +143,6 @@ public class rapor extends AppCompatActivity {
             toast.show();
         }
     }
+
+
 }
