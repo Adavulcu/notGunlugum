@@ -1,13 +1,20 @@
 package com.example.apo.hazirlaniyorum;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ExpandableListView;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,13 +30,13 @@ public class rapor extends AppCompatActivity  {
     TabHost tabHost;
     //////////////////////////////////////////////////YGS BÖLÜMÜ
     private ArrayList<String> titleYGS;
-    private RaporExpListAdapter expand_adapterYGS;
+    private raporExpadapter expand_adapterYGS;
     private HashMap<String, ArrayList<dersEkle>> derslerListYGS;
     final ArrayList<dersEkle> derslerYGS=new ArrayList<dersEkle>();
     private ExpandableListView expandlist_viewYGS;
     /////////////////////////////////////////LYS bölümü
     private ArrayList<String> titleLYS;
-    private RaporExpListAdapter expand_adapterLYS;
+    private raporExpadapter expand_adapterLYS;
     private HashMap<String, ArrayList<dersEkle>> derslerListLYS;
     final ArrayList<dersEkle> derslerLYS=new ArrayList<dersEkle>();
     private ExpandableListView expandlist_viewLYS;
@@ -71,7 +78,7 @@ public class rapor extends AppCompatActivity  {
         HazırlaYGS(); // expandablelistview içeriğini hazırlamak için
 
         // Adapter sınıfımızı oluşturmak için başlıklardan oluşan listimizi ve onlara bağlı olan elemanlarımızı oluşturmak için HaspMap türünü yolluyoruz
-        expand_adapterYGS = new RaporExpListAdapter(getApplicationContext(), titleYGS, derslerListYGS);
+        expand_adapterYGS = new raporExpadapter(getApplicationContext(), titleYGS, derslerListYGS);
         expandlist_viewYGS.setAdapter(expand_adapterYGS);  // oluşturduğumuz adapter sınıfını set ediyoruz
         expandlist_viewYGS.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -87,7 +94,7 @@ public class rapor extends AppCompatActivity  {
         HazırlaLYS(); // expandablelistview içeriğini hazırlamak için
 
         // Adapter sınıfımızı oluşturmak için başlıklardan oluşan listimizi ve onlara bağlı olan elemanlarımızı oluşturmak için HaspMap türünü yolluyoruz
-        expand_adapterLYS = new RaporExpListAdapter(getApplicationContext(), titleLYS, derslerListLYS);
+        expand_adapterLYS = new raporExpadapter(getApplicationContext(), titleLYS, derslerListLYS);
         expandlist_viewLYS.setAdapter(expand_adapterLYS);  // oluşturduğumuz adapter sınıfını set ediyoruz
     } catch (Exception ex) {
         int durtion = Toast.LENGTH_LONG;
@@ -144,5 +151,127 @@ public class rapor extends AppCompatActivity  {
         }
     }
 
+     private class raporExpadapter extends BaseExpandableListAdapter{
+         private ArrayList<String> list_parent;
+         private HashMap<String, ArrayList<dersEkle>> list_child;
+         private Context context;
+         private TextView derssecimi;
+         private CheckBox txt_child;
+         private Button goruntule;
+         private LayoutInflater inflater;
+
+         public raporExpadapter(Context context, ArrayList<String> list_parent, HashMap<String, ArrayList<dersEkle>> list_child)
+         {
+             this.context = context;
+             this.list_parent = list_parent;
+             this.list_child=list_child;
+         }
+         @Override
+         public int getGroupCount() {
+             return list_parent.size();
+         }
+
+         @Override
+         public int getChildrenCount(int groupPosition) {
+             return list_child.get(list_parent.get(groupPosition)).size();
+         }
+
+         @Override
+         public Object getGroup(int groupPosition) {
+
+             return list_parent.get(groupPosition);
+         }
+
+         @Override
+         public Object getChild(int groupPosition, int childPosition) {
+
+             return list_child.get(list_parent.get(groupPosition)).get(childPosition);
+
+         }
+
+         @Override
+         public long getGroupId(int groupPosition) {
+
+             return groupPosition;
+         }
+
+         @Override
+         public long getChildId(int groupPosition, int childPosition) {
+
+             return childPosition;
+         }
+
+
+         @Override
+         public boolean hasStableIds() {
+
+             return true;
+
+         }
+
+         @Override
+         public View getGroupView(int groupPosition, boolean isExpanded,
+                                  View view, ViewGroup parent) {
+             try {
+                 String title_name = (String)getGroup(groupPosition);
+
+                 if(view == null)
+                 {
+                     inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                     view = inflater.inflate(R.layout.derssecimi,null);
+                 }
+                 derssecimi=(TextView)view.findViewById(R.id.derssecimiView);
+                 derssecimi.setText(title_name);
+                 goruntule=(Button ) view.findViewById(R.id.goruntuleBtn);
+                 // goruntule.setText("GÖRÜNTÜLE");
+             }
+             catch (Exception ex)
+             {
+                 int durtion= Toast.LENGTH_LONG;
+                 Toast toast= Toast.makeText(context,ex.getMessage()+" rapor parent",durtion);
+                 toast.show();
+             }
+
+
+             return view;
+         }
+
+
+         @Override
+         public View getChildView(int groupPosition, int childPosition,
+                                  boolean isLastChild, View view, ViewGroup parent) {
+             try {
+
+
+                 // kaçıncı pozisyonda ise başlığımızın elemanı onun ismini alarak string e atıyoruz
+                 // String ders = (String) getChild(groupPosition, childPosition);
+                 dersEkle ders=(dersEkle) getChild(groupPosition, childPosition);
+                 if (view == null) {
+                     inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                     view = inflater.inflate(R.layout.rapordersler, null);
+                     // fonksiyon adından da anlaşılacağı gibi parent a bağlı elemanlarının layoutunu inflate ediyoruz böylece o görüntüye ulaşmış oluyoruz
+                 }
+
+                 // listview_child ulaştığımıza göre içindeki bileşeni de kullanabiliyoruz daha sonradan view olarak return ediyoruz
+                 txt_child = (CheckBox) view.findViewById(R.id.raporDersCheck);
+                 txt_child.setText(ders.getDersAd());
+
+
+             }
+             catch (Exception ex)
+             {
+                 int durtion= Toast.LENGTH_LONG;
+                 Toast toast= Toast.makeText(context,ex.getMessage()+"child",durtion);
+                 toast.show();
+             }
+             return view;
+
+         }
+
+         @Override
+         public boolean isChildSelectable(int i, int i1) {
+             return true;
+         }
+     }
 
 }
