@@ -76,7 +76,10 @@
                     <ExpandableListView
                         android:id="@+id/exp_listYGS"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" >
+                        android:layout_height="wrap_content"
+                        android:divider="#0c2ad6"
+                        android:dividerHeight="2dp"
+                        android:childDivider="#99b9b8">
                     </ExpandableListView>
 
 
@@ -90,7 +93,10 @@
                     <ExpandableListView
                         android:id="@+id/exp_listLYS"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" >
+                        android:layout_height="wrap_content"
+                        android:divider="#0c2ad6"
+                        android:dividerHeight="2dp"
+                        android:childDivider="#99b9b8">>
                     </ExpandableListView>
 
                 </LinearLayout>
